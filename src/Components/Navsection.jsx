@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Feedback from "./Feedback.jsx";
-import { LinkContainer } from "react-router-bootstrap";
 import {
   Collapse,
   Navbar,
@@ -12,24 +10,12 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Badge,
-  NavLink,
-  TabContent,
-  TabPane,
-  Row,
-  Col,
-  Button
+  Badge
 } from "reactstrap";
 import {
-  BrowserRouter as Router,
-  HashRouter,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
+  Link
 } from "react-router-dom";
-import Home from "./Home.jsx";
+
 import classnames from "classnames";
 const Navsection = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +23,6 @@ const Navsection = (props) => {
     setIsOpen(!isOpen);
   };
   return (
-    <HashRouter>
       <Navbar color="dark" dark expand="md">
         <NavbarBrand className="ml-lg-5" href="/">
           LOGO
@@ -65,7 +50,7 @@ const Navsection = (props) => {
                 <DropdownItem>
                   <Link
                     className="text-decoration-none p-0 text-secondary"
-                    to="/Product/Children"
+                    to="/product/children"
                   >
                     Children
                   </Link>
@@ -73,7 +58,7 @@ const Navsection = (props) => {
                 <DropdownItem>
                   <Link
                     className="text-decoration-none p-0 text-secondary"
-                    to="/Product/Adults"
+                    to="/product/adults"
                   >
                     Adults
                   </Link>
@@ -81,7 +66,7 @@ const Navsection = (props) => {
                 <DropdownItem>
                   <Link
                     className="text-decoration-none p-0 text-secondary"
-                    to="/Product/Elders or Old"
+                    to="/product/elder-old"
                   >
                     Elders or Old
                   </Link>
@@ -90,7 +75,7 @@ const Navsection = (props) => {
             </UncontrolledDropdown>
             <NavItem className="mx-auto mb-2">
               <Link
-                to="/Company"
+                to="/company"
                 className="text-white p-0 text-decoration-none ml-2 "
               >
                 Company
@@ -102,7 +87,7 @@ const Navsection = (props) => {
             <NavItem className="mx-auto mb-2">
               <Link
                 className="text-white p-0 text-decoration-none "
-                to="/Contacts"
+                to="/contacts"
               >
                 Contacts
               </Link>
@@ -110,35 +95,22 @@ const Navsection = (props) => {
           </Nav>
         </Collapse>
       </Navbar>
-      <Switch>
-        <Route path="/Product">
-          <Products />
-        </Route>
-        <Route path="/Company">
-          <h1>This is our Company.</h1>
-        </Route>
-        <Route path="/Contacts">
-          <Feedback />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </HashRouter>
   );
 };
-function Products() {
-  let match = useRouteMatch();
-  return (
-    <div>
-      <Switch>
-        <Route path={`${match.path}/:topicId`}>
-          <Product />
-        </Route>
-      </Switch>
-    </div>
-  );
-}
+// function Products() {
+//   let match = useRouteMatch();
+//   return (
+//     <div>
+//       <Switch>
+//         <Route path={`${match.path}/:topicId`}>
+//           <Product />
+//         </Route>
+//       </Switch>
+//     </div>
+//   );
+// }
+
+/*
 function Product() {
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
@@ -152,7 +124,6 @@ function Product() {
       <h1 className="my-3"> Products for {topicId}</h1>
       <div className="w-75 mx-auto mt-3">
         <Nav tabs>
-          <LinkContainer to={`${match.url}/Medicines`}>
             <NavItem className="w-50">
               <NavLink
                 className={classnames({ active: activeTab === "1" })}
@@ -163,8 +134,6 @@ function Product() {
                 Medicines
               </NavLink>
             </NavItem>
-          </LinkContainer>
-          <LinkContainer to={`${match.url}/Health Suppliments`}>
             <NavItem className="w-50">
               <NavLink
                 className={classnames({ active: activeTab === "2" })}
@@ -175,7 +144,6 @@ function Product() {
                 Health Suppliments
               </NavLink>
             </NavItem>
-          </LinkContainer>
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
@@ -240,4 +208,5 @@ function Product() {
     </div>
   );
 }
+*/
 export default Navsection;
